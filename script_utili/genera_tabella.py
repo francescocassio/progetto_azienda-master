@@ -1,4 +1,5 @@
 import mysql.connector
+
 def crea_tabella():
     conn = mysql.connector.connect(
         user="root",
@@ -20,6 +21,28 @@ def crea_tabella():
      );
 """
     cursor.execute(q_crea_fatture)
+
+    creazione_trigger_arrotonda_iva_imponibile = """
+          DELIMITER $$
+        
+        CREATE TRIGGER arrotonda_fatture
+        BEFORE INSERT ON fatture
+        FOR EACH ROW
+        BEGIN
+            SET NEW.imponibile = ROUND(NEW.imponibile, 2);
+            SET NEW.iva = ROUND(NEW.iva, 2);
+        
+            IF ROUND(NEW.imponibile + NEW.iva, 2) <> NEW.importo THEN
+                SET NEW.importo = ROUND(NEW.imponibile + NEW.iva, 2);
+            END IF;
+        END$$
+        
+        DELIMITER ;
+        """
+    #aggiungo anche il trigger
+    cursor.execute(creazione_trigger_arrotonda_iva_imponibile)
+
+
 
 if __name__ == '__main__':
     try:

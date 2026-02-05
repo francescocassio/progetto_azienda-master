@@ -18,8 +18,7 @@ def scelta():
             if opzione == 1:
                 inserisci_fattura()
             elif opzione == 2:
-                pass
-                # mostra_fatture()
+                mostra_fatture()
             elif opzione == 0:
                 break
             else:
