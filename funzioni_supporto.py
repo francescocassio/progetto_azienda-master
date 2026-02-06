@@ -13,7 +13,11 @@ def scelta():
     while True:
         menu()
         try:
+
+
             opzione = int(input("Scelta: "))
+
+
 
             if opzione == 1:
                 inserisci_fattura()

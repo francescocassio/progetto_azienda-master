@@ -66,3 +66,21 @@ def esegui_query_select(query):
     finally:
         cursor.close()
         connessione.close()
+
+def esegui_query_select_param(query, param):
+    #creiamo la connessione al db
+    connessione = create_connection()
+
+    #creiamo un cursore per navigare nel db
+    cursor = connessione.cursor()
+
+    try:
+        cursor.execute(query, param)
+        result = cursor.fetchall()
+
+        return result
+    except Error as e:
+        print(f"The error '{e}' occurred")
+    finally:
+        cursor.close()
+        connessione.close()
