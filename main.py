@@ -22,6 +22,8 @@ def main():
 
     print(ris)
 
+    print("ciao")
+
 
 
     # scelta()
