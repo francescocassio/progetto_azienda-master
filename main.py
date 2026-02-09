@@ -22,7 +22,7 @@ def main():
 
     print(ris)
 
-    print("ciao")
+    print("ciao cecilia")
 
     print("mondo")
 
