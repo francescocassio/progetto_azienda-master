@@ -24,6 +24,8 @@ def main():
 
     print("ciao")
 
+    print("mondo")
+
 
 
     # scelta()
