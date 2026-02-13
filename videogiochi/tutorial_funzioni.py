@@ -12,8 +12,7 @@
 # l = [254,6352,5,32,523,5,235,235,23,53,3,553]
 # stampa_lista(l, pari = True)
 
-a = [2,4,25,235,3,25]
+def moltiplicazione(n1, n2, n3 = 1):
+    return n1 * n2 * n3
 
-a_ord = sorted(a, reverse = True)
-
-print(a_ord)
+print(moltiplicazione(10, 20, 15))

@@ -1,13 +1,13 @@
 import mysql.connector
 from mysql.connector import Error
-def create_connection():
+def create_connection(nome_db):
     connection = None
     try:
         connection = mysql.connector.connect(
             user="root",
             password="",
             host="localhost",
-            database="azienda_generation")
+            database=nome_db)
         print("Connection to DB successful")
     except Error as e:
         print(f"The error '{e}' occurred")
@@ -33,9 +33,9 @@ def create_database(nome_db, drop = False):
     except Error as e:
         print(f"The error '{e}' occurred")
 
-def esegui_query(query):
+def esegui_query(query, nome_db):
     #creiamo la connessione al db
-    connessione = create_connection()
+    connessione = create_connection(nome_db)
 
     #creiamo un cursore per navigare nel db
     cursor = connessione.cursor()
@@ -50,9 +50,9 @@ def esegui_query(query):
         cursor.close()
         connessione.close()
 
-def esegui_query_param(query, param):
+def esegui_query_param(query, param, nome_db):
     #creiamo la connessione al db
-    connessione = create_connection()
+    connessione = create_connection(nome_db)
 
     #creiamo un cursore per navigare nel db
     cursor = connessione.cursor()
@@ -68,9 +68,9 @@ def esegui_query_param(query, param):
         connessione.close()
 
 
-def esegui_query_select(query):
+def esegui_query_select(query, nome_db):
     #creiamo la connessione al db
-    connessione = create_connection()
+    connessione = create_connection(nome_db)
 
     #creiamo un cursore per navigare nel db
     cursor = connessione.cursor()
@@ -86,9 +86,9 @@ def esegui_query_select(query):
         cursor.close()
         connessione.close()
 
-def esegui_query_select_param(query, param):
+def esegui_query_select_param(query, param, nome_db):
     #creiamo la connessione al db
-    connessione = create_connection()
+    connessione = create_connection(nome_db)
 
     #creiamo un cursore per navigare nel db
     cursor = connessione.cursor()
