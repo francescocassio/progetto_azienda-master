@@ -10,7 +10,7 @@
 from funzioni_database import create_database
 
 if __name__ == '__main__':
-    create_database("prova999")
+    create_database("prova999", drop = True)
 
     print("fine del programma")
 

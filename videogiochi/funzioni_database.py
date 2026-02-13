@@ -14,8 +14,7 @@ def create_connection():
 
     return connection
 
-def create_database(nome_db):
-    connection = None
+def create_database(nome_db, drop = False):
     try:
         connection = mysql.connector.connect(
             user="root",
@@ -23,12 +22,16 @@ def create_database(nome_db):
             host="localhost",
             )
         mycursor = connection.cursor()
+
+        if drop:
+            mycursor.execute(f"DROP DATABASE IF EXISTS {nome_db}")
+            print(f"eliminato db {nome_db}")
+
         mycursor.execute(f"CREATE DATABASE {nome_db}")
+        print(f"creato db {nome_db}")
 
     except Error as e:
         print(f"The error '{e}' occurred")
-
-    return connection
 
 def esegui_query(query):
     #creiamo la connessione al db
