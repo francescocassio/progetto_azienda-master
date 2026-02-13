@@ -33,7 +33,7 @@ def create_database(nome_db, drop = False):
     except Error as e:
         print(f"The error '{e}' occurred")
 
-def esegui_query(query, nome_db):
+def esegui_query(query, nome_db, messaggio = "Query executed successfully"):
     #creiamo la connessione al db
     connessione = create_connection(nome_db)
 
@@ -43,7 +43,7 @@ def esegui_query(query, nome_db):
     try:
         cursor.execute(query)
         connessione.commit() #committiamo i risultati
-        print("Query executed successfully")
+        print(messaggio)
     except Error as e:
         print(f"The error '{e}' occurred")
     finally:
