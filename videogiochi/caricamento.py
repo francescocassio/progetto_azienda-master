@@ -13,8 +13,19 @@ def caricamento_dati(nome_db):
         #questsa tupla è diversa per ogni gioco che vado ad iterare
 
         for gioco in tqdm(lettore_csv):
+            if gioco['Year'] == "N/A":
+                anno = None
+            else:
+                anno = gioco['Year']
+
+            if gioco['Publisher'] == "Unknown" or gioco['Publisher'] == "N/A":
+                publisher = None
+            else:
+                publisher = gioco['Publisher']
+
+
             dati = (gioco['Rank'], gioco['Name'],gioco['Platform'],
-                    gioco['Year'],gioco['Genre'],gioco['Publisher'],
+                    anno,gioco['Genre'],publisher,
                     gioco['NA_Sales'],gioco['EU_Sales'],gioco['JP_Sales'],
                     gioco['Other_Sales'],gioco['Global_Sales'])
 

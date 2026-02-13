@@ -1,6 +1,6 @@
 crea_tabella_videogiochi = """CREATE TABLE videogiochi(
 	Rank INT PRIMARY KEY,
-    Name VARCHAR(50) NOT NULL,
+    Name VARCHAR(200) NOT NULL,
     Platform VARCHAR(50),
     Year_v YEAR,
     Genre VARCHAR(50),
