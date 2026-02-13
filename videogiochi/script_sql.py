@@ -9,6 +9,5 @@ crea_tabella_videogiochi = """CREATE TABLE videogiochi(
     EU_Sales DECIMAL(7,2),
     JP_Sales DECIMAL(7,2),
     Other_Sales DECIMAL(7,2),
-    Global_Sales DECIMAL(7,2),
-    UNIQUE(Name, Platform, Year_v)
+    Global_Sales DECIMAL(7,2)
 );"""

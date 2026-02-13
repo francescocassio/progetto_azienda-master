@@ -19,6 +19,8 @@ if __name__ == '__main__':
 
     #carico i dati dal csv nel db
     caricamento_dati("database_videogiochi")
+    caricamento_dati("database_videogiochi")
+    caricamento_dati("database_videogiochi")
 
     print("fine del programma")
 

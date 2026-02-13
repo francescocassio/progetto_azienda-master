@@ -1,5 +1,5 @@
 import csv
-from funzioni_database import esegui_query_param
+from funzioni_database import esegui_query_param, create_connection, esegui_query_param_noconn
 from tqdm import tqdm
 def caricamento_dati(nome_db):
     with open("vgsales.csv", "r", encoding="utf-8") as f:
@@ -11,7 +11,7 @@ def caricamento_dati(nome_db):
 
         #mi serve una tupla che contenga questi 11 %s
         #questsa tupla è diversa per ogni gioco che vado ad iterare
-
+        conn = create_connection(nome_db)
         for gioco in tqdm(lettore_csv):
             if gioco['Year'] == "N/A":
                 anno = None
@@ -29,4 +29,5 @@ def caricamento_dati(nome_db):
                     gioco['NA_Sales'],gioco['EU_Sales'],gioco['JP_Sales'],
                     gioco['Other_Sales'],gioco['Global_Sales'])
 
-            esegui_query_param(q, dati, nome_db)
+            esegui_query_param_noconn(q, dati, conn)
+        conn.close()
