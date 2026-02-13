@@ -8,7 +8,7 @@ def create_connection(nome_db):
             password="",
             host="localhost",
             database=nome_db)
-        print("Connection to DB successful")
+        # print("Connection to DB successful")
     except Error as e:
         print(f"The error '{e}' occurred")
 
@@ -60,9 +60,10 @@ def esegui_query_param(query, param, nome_db):
     try:
         cursor.execute(query, param)
         connessione.commit() #committiamo i risultati
-        print("Query executed successfully")
+        # print("Query executed successfully")
     except Error as e:
         print(f"The error '{e}' occurred")
+        print(param[0])
     finally:
         cursor.close()
         connessione.close()
